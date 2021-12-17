@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+    <div class="container mt-5">
+        {% for msg in messages %}
+            <div class="alert alert-success" role="alert">
+                {{ msg }}
+            </div>
+        {% endfor %}
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+
+            <button type="submit" class="btn btn-success">Kaydet</button>
+            <p></p>
+        </form>
+
+
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th scope="col">Çalışan Adı</th>
+                <th scope="col">Çalışma Tipi</th>
+                <th scope="col">Başlangıç Saati</th>
+                <th scope="col">Bitiş Saati</th>
+                <th scope="col">Şirket</th>
+                <th scope="col">Departman</th>
+                <th scope="col">Günlük Çalışma Saati</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            {% block total %}
+                {% for report in reports_list %}
+
+                    <tr>
+                        <td>{{ report.user.first_name }}</td>
+                        <td>{{ report.working_type }}</td>
+                        <td>{{ report.starting_time }}</td>
+                        <td>{{ report.ending_time }}</td>
+                        <td>{{ report.user.company }}</td>
+                        <td>{{ report.user.department.name }}</td>
+                        <td>{{ report.calculate_total_working_time }}</td>
+                        {{ total_working|add:report.ending_time|timeuntil:report.starting_time }}
+
+                    </tr>
+                {% endfor %}
+                <tr>
+                    <td>
+                        Toplam Çalışma Saati: {{ total }}
+                    </td>
+                </tr>
+            {% endblock %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

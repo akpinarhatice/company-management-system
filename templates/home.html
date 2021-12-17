@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}Ana Sayfa{% endblock %}
+
+
+{% block content %}
+
+    <ul class="nav justify-content-center mt-3">
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1">Anasayfa</a>
+        </li>
+    </ul>
+
+    <nav class="navbar navbar-light">
+        <!-- Navbar content -->
+    </nav>
+
+    <nav class="navbar navbar-light">
+        <!-- Navbar content -->
+    </nav>
+    <div class="container mt-5">
+        <div class="alert alert-success" role="alert">
+
+            <p>  {% if user.is_authenticated %}
+                <h4 class="alert-heading">Well done! Hoşgeldin {{ user.first_name }} :)</h4>
+
+                <p></p>
+                <p> İsim: {{ user.first_name }}</p>
+                <p>Soyisim: {{ user.last_name }}</p>
+                <p>Şirket: {{ user.company }}</p>
+                <p>Departman: {{ user.department }}</p>
+
+
+
+                </p>
+                <hr>
+                <p class="mb-0"></p>
+                <p>Çalışma saati girişi için lütfen yukarıda bulunan 'Sistem' sekmesine tıklayınız.</p>
+                </div>
+            {% else %}
+                <h4 class="alert-heading">Giriş Yapmadınız!</h4>
+                <p>Giriş yapmak için kayıtlıysanız seçeneklere tıkladıktan sonra 'giriş yap' butonuna
+                    tıklayabilirsiniz.</p>
+
+            {% endif %}
+        <div class="alert alert-" role="alert">
+        </div>
+    </div>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class='container'>
+
+        <ul class="nav justify-content-center">
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1">Kayıt Ekranı</a>
+            </li>
+        </ul>
+
+        <nav class="navbar navbar-light">
+            <!-- Navbar content -->
+        </nav>
+
+        <nav class="navbar navbar-light">
+            <!-- Navbar content -->
+        </nav>
+        <div class="container">
+        <h2> Kayıt Ol </h2>
+            <div class="container">
+        <form method="POST" class="form-group">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+
+            <button type="submit" class="btn btn-success">Kaydol</button>
+
+            <br><br>
+        </form>
+                </div>
+        </div>
+
+    </div>
+{% endblock content %}

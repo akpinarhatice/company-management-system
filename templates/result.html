@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <div class="container mt-5">
+
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th scope="col">Çalışan Adı</th>
+                <th scope="col">Çalışma Tipi</th>
+                <th scope="col">Başlangıç Saati</th>
+                <th scope="col">Bitiş Saati</th>
+                <th scope="col">Şirket</th>
+                <th scope="col">Departman</th>
+                <th scope="col">Günlük Çalışma Saati</th>
+            </tr>
+            </thead>
+
+            <tbody>{% block total %}
+            {% for result in result_list %}
+                <tr>
+                    <td>{{ result.user.first_name }}</td>
+                    <td>{{ result.working_type }}</td>
+                    <td>{{ result.starting_time }}</td>
+                    <td>{{ result.ending_time }}</td>
+                    <td>{{ result.user.company }}</td>
+                    <td>{{ result.user.department.name }}</td>
+                    <td>{{ result.calculate_total_working_time }}</td>
+                {{ total_working|add:result.ending_time|timeuntil:result.starting_time }}
+                </tr>
+            {% endfor %}
+                <tr>
+                    <td>
+                        Toplam Çalışma Saati: {{ total }}
+                    </td>
+                </tr>
+                {% endblock %}
+            </tbody>
+
+        </table>
+
+    </div>
+{% endblock %}

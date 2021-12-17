@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+
+        <ul class="nav justify-content-center">
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1">Giriş Ekranı</a>
+            </li>
+        </ul>
+
+        <nav class="navbar navbar-light">
+            <!-- Navbar content -->
+        </nav>
+
+        <nav class="navbar navbar-light">
+            <!-- Navbar content -->
+        </nav>
+
+        <h2> Giriş Yap </h2>
+        <div class="container">
+
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-success">Giriş</button>
+            </form>
+
+        </div>
+    </div>
+{% endblock %}

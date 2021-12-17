@@ -1,0 +1,15 @@
+footer {
+    height: 20px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-bottom: 0;
+}
+
+form {
+    display: inline-block;
+    width: 220px;
+    margin: 5px 0;
+}
+
+
